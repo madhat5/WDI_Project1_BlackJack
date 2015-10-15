@@ -112,3 +112,16 @@ input {
 	height: 125px;
 	color: black;
 }
+
+#game-buttons {
+	border-radius: 30%;
+}
+
+.game-options {
+	position: absolute;
+	/*right: 0%;*/
+	top: 75%;
+	width: 100px;
+	height: 125px;
+	color: black;
+}
