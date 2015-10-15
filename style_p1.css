@@ -1,0 +1,104 @@
+body {
+	background-image: url('materials/gameboard.png');
+    background-size: cover; 
+    /*min-height: 100%;*/
+}
+
+h1 {
+	text-align: center;
+	color: tomato;
+	font-family: 'Pacifico', cursive;
+	font-size: 42px;
+	margin-top: -5px;
+}
+
+#game-rules {
+	font-family: 'Poiret One', cursive;
+	text-align: left;
+	color: white;
+	font-size: 13px;
+	width: 30%;
+	margin-top: -30px;
+	margin-left: 10px;
+}
+
+/*refactor using position: absolute, cf .dealer-cards */
+.game-status {
+	font-family: 'Shadows Into Light', cursive;
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+	width: 250px;
+	margin-left: 75%;
+	margin-top: -17%;
+	/*position: absolute;*/
+}
+
+#player-funds {
+	background-color: green;
+	border: 2px solid grey;
+	border-radius: 13px;
+	margin-bottom: 5px
+}
+
+#player-bet {
+	background-color: green;
+	border: 2px solid grey;
+	border-radius: 13px;
+}
+
+.dealer-cards {
+	position: absolute;
+	right: 50%;
+	top: 40%;
+	width: 100px;
+	height: 125px;
+	color: black;
+	/*margin-left: 50%;
+	margin-top: 5%;
+	bottom: -15%;*/
+}
+
+#dealer-first {
+	background-color: white;
+	border: 1px solid black;
+	height: 125px;
+	display: inline-block;
+	/*width: 50%;*/
+	/*display: ;*/
+}
+
+#dealer-second {
+	background-color: white;
+	border: 1px solid black;
+	height: 125px;
+	display: inline-block;
+}
+
+.player-cards {
+	position: absolute;
+	right: 65%;
+	top: 75%;
+	width: 100px;
+	height: 125px;
+	color: black;
+	/*margin-left: 50%;
+	margin-top: 5%;
+	bottom: -15%;*/
+}
+
+#player-first {
+	background-color: white;
+	border: 1px solid black;
+	height: 125px;
+	display: inline-block;
+	/*width: 50%;*/
+	/*display: ;*/
+}
+
+#player-second {
+	background-color: white;
+	border: 1px solid black;
+	height: 125px;
+	display: inline-block;
+}
