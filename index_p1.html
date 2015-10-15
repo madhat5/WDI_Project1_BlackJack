@@ -15,8 +15,10 @@
 		</div>
 	</header>
 	<section class='game-status'>
-		<div id='player-funds'> $- Enter Funds Here</div>
-		<div id='player-bet'> $- Enter Bet Here</div>
+		<div id='player-funds'> $- Funds Here</div>
+		<div id='player-bet'> $- Current Bet</div>
+		<input type='text' placeholder='Place bet'>
+		<button>Bet</button>
 	</section>
 	<section class='dealer-cards'>
 		<div id='dealer-first'>Card1</div>
@@ -26,7 +28,18 @@
 		<div id='player-first'>Card1</div>
 		<div id='player-second'>Card2</div>
 	</section>
-
+	<section class='game-parameters'>
+		<div id='game-inputs'>
+			<input type='text' placeholder='# of players (3 max)'>
+			<input type='text' placeholder='# of AI (3 max)'>
+			<input type='text' placeholder='# of decks in shoe'>
+		</div>
+		<div id='game-buttons'>
+			<button>Start</button>
+			<button>Reset</button>
+			
+		</div>
+	</section>
 	<script src=''></script>
 	<script src='app_p1.js'></script>
 </body>
