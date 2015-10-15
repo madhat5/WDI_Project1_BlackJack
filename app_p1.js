@@ -22,7 +22,7 @@ console.log('sim sim salabim');
 // array dealerHand holds dealer cards from dealCards
 // >>>>b2>> aiHand for user option play with ai/players vs dealer mix 
 
-// deck vars
+
 // gameDeck holds/handles playable deck 
 var deckCount = 1;
 var gameShoe = [];
@@ -32,12 +32,12 @@ var gameDeck = {
 	deckShuffled: [],
 	shuffle: function(deck52) {
 		for (var j, x, i = deck52.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-			deckShuffled[x]
+			deckShuffled[x];
 		return deckShuffled;
 	},
 	shoe: function() {
 		for (var x = 0; x <= deckCount; x++) {
-			gameShoe[x] = deckShuffled.pop()
+			gameShoe[x] = deckShuffled.pop(); //sinon use .splice(x)
 		}
 		return gameShoe;
 	},
@@ -68,12 +68,12 @@ var gameDeck = {
 	// if playerHand < 21 && < dealerHand, dealer wins
 
 // game functions
-// startGame.click, takes user inputs (human players, ai) and waits for placeBet.click 
+// startGame.click, takes user inputs (human players, ai) and waits for placeBet.click (game-sestup && start button disappears)
 // resetGame.click, sets all game-inputs and bets to null, resets funds, goes to pre-startGame screen
 
-// card functions
+
 // createDeck gives back 52 card deck, with BJ values
-// *****note: tie cards to deck52
+// note: tie cards to deck52
 function createDeck() {
 	function card(value, name, suit){
 		this.value = value;
@@ -93,15 +93,32 @@ function createDeck() {
         	}
     	}
     	console.log(cards);
+    	// return cards;
 		// console.log(deck52);
-    	return cards;
+		// return deck52;
 	}
-	// console.log(deck52);
-	// return deck52
 	deck();
+};
 
-}
+// set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
+// refactor after calcHand done
+function softAce() {
+	for (var x = 0; x < playerHand.length; x++) {
+		if (playerHand[x] === card.name('A')) {
+			if (calcHand > 21) {
+				card.name('A').value // change to 1;
+			}
+		}
+	}
+};
 
+// dealCards gives 2 cards to each player,then to dealer
+function dealCards() {
+	for (var x = 0; x <= 2; x++) {
+		playerHand[x] = gameShoe.splice(x);
+	}
+	console.log(playerHand);
+};
 
 
 //////////////////////////////////////////
