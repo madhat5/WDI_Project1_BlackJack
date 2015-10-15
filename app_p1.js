@@ -30,6 +30,7 @@ var gameShoe = [];
 var gameDeck = {
 	deck52: [],
 	deckShuffled: [],
+	// this goes into createDeck
 	shuffle: function(deck52) {
 		for (var j, x, i = deck52.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 			deckShuffled[x];
@@ -50,7 +51,7 @@ var gameDeck = {
 
 // card functions
 // --x--shuffle/randomize (already included in gameDeck{} object)
-// --x--createDeck function, gives deck52 an array
+// createDeck function, gives deck52 an array
 // softAce function controls ace value (ace = 11; if hand + ace > 21, ace = 1)
 // --x--dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
@@ -59,7 +60,8 @@ var gameDeck = {
 // --x--calcPlayer sums current playerHand[x], calculates after 2 cards dealt, and hit
 	// --x--if (initial) playerHand = 21, player wins (1.5x bet) 
 	// --x--if playerHand > 21, Bust!
-//--hitOrStand asks user after 2 card dealt if want to hit (+1 card) or stay (break) 
+// hitOrStand
+//--x--hit.click user after 2 card dealt if want to hit (+1 card) or stand.click stand calls dealerPlay
 	// >>b1>> after first 2 cards dealt, user has double down option (can also double down on split), then calcPlayer (doubleDown gives 1 card, can't hit anymore)
 	// >>b1>> split function if 2 initial cards === value > splits hand to var splitHand, runs hitOrStand for each card in splitHand
 // dealerPlay hits until hand <= 17
@@ -81,7 +83,7 @@ function createDeck() {
 		this.value = value;
 		this.name = name;
 		this.suit = suit;
-}
+	}
 	
 	function deck(){
 		this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -115,7 +117,7 @@ function softAce() {
 	}
 };
 
-// dealCards gives 2 cards to each player,then to dealer
+// dealCards gives 2 cards to each player,then to dealer; splice b/c need to retain order (already shuffled)
 function dealCards() {
 	for (var x = 0; x <= 2; x++) {
 		playerHand[x] = gameShoe.splice(x);
@@ -125,6 +127,7 @@ function dealCards() {
 
 // placeBet function handles user bet input, bankroll update, bet display, card deal start
 $('#bet-button').click(function() {
+	console.log('bet works');
 	var userInput = $('#bet-button').value; //not .innerHTML right?
 	
 	bankRoll -= userInput;
@@ -155,15 +158,28 @@ function calcPlayer() {
 	// return handTotal
 };
 
-// ask user if 
-function hitOrStand() {
-	if (playerHand.length === 2) {
-		setTimeout(function() {
-			alert("Boom!");
-		}, 2000);
+$('#hit-button').click(function() {
+	// console.log('hit works');
+	for (var hitCount = 0; hitCount; hitCount = playerHand.length) {
+		playerHand[hitCount] = gameShoe.splice(x);
 	}
-};
+});
 
+$('#stand-button').click(function() {
+	// console.log('stand works');
+	dealerPlay(); //with settimeout
+});
+
+
+/////////////
+// function hitOrStand() {
+// 	if (playerHand.length === 2) {
+// 		setTimeout(function() {
+// 			alert("Boom!");
+// 		}, 2000);
+// 	}
+// };
+/////////////
 
 function compareHand() {
 	// if (handTotal = 21) {
@@ -180,3 +196,4 @@ function compareHand() {
 // fund/bet changes as diff player takes turn
 // do i need an empty array for house$ (user money lost)?
 // difference btw reset button, and win hand (just resets bet + hand, add winnings to bankRoll)
+// make each function an object, create new js for window.onload, load objects values(functions)
