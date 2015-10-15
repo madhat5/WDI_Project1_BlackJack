@@ -55,7 +55,7 @@ var gameDeck = {
 // dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
 // betting functions
-// placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in bet input, calls deal cards
+// placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in player bet div, calls deal cards
 // calcHand sums current playerHand[x], calculates after 2 cards dealt, and hit
 	// if (initial) playerHand = 21, player wins (1.5x bet) 
 	// if playerHand > 21, Bust!
@@ -68,11 +68,12 @@ var gameDeck = {
 	// if playerHand < 21 && < dealerHand, dealer wins
 
 // game functions
-// startGame.click, takes user inputs (human players, ai) and waits for placeBet.click (game-sestup && start button disappears)
+// startGame.click, takes user inputs (human players, ai) and waits for placeBet.click (game-setup && start button disappears)
+	// alert('Please enter your bet')
 // resetGame.click, sets all game-inputs and bets to null, resets funds, goes to pre-startGame screen
 
 
-// createDeck gives back 52 card deck, with BJ values
+// createDeck gives back 52 card deck, with correct BJ values
 // note: tie cards to deck52
 function createDeck() {
 	function card(value, name, suit){
@@ -102,6 +103,7 @@ function createDeck() {
 
 // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
 // refactor after calcHand done
+// handles Ace behaviour
 function softAce() {
 	for (var x = 0; x < playerHand.length; x++) {
 		if (playerHand[x] === card.name('A')) {
@@ -120,13 +122,16 @@ function dealCards() {
 	console.log(playerHand);
 };
 
-// placeBet function
+// placeBet function handles user bet input, bankroll update, bet display, card deal start
 $('#bet-button').click() {
 	var userInput = $('#bet-button').value; //not .innerHTML right?
+	
 	bankRoll -= userInput;
 	playerBet = userInput;
 
-	// dealCards();
+	$('#player-bet').innerHTML = userInput;
+
+	dealCards();
 }	
 
 
