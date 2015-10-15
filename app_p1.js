@@ -50,16 +50,16 @@ var gameDeck = {
 
 // card functions
 // --x--shuffle/randomize (already included in gameDeck{} object)
-// createDeck function, gives deck52 an array
+// --x--createDeck function, gives deck52 an array
 // softAce function controls ace value (ace = 11; if hand + ace > 21, ace = 1)
-// dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
+// --x--dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
 // betting functions
-// placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in player bet div, calls deal cards
-// calcPlayer sums current playerHand[x], calculates after 2 cards dealt, and hit
-	// if (initial) playerHand = 21, player wins (1.5x bet) 
-	// if playerHand > 21, Bust!
-// hitOrStand asks user after 2 card dealt if want to hit (+1 card) or stay (break) 
+// --x--placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in player bet div, calls deal cards
+// --x--calcPlayer sums current playerHand[x], calculates after 2 cards dealt, and hit
+	// --x--if (initial) playerHand = 21, player wins (1.5x bet) 
+	// --x--if playerHand > 21, Bust!
+//--hitOrStand asks user after 2 card dealt if want to hit (+1 card) or stay (break) 
 	// >>b1>> after first 2 cards dealt, user has double down option (can also double down on split), then calcPlayer (doubleDown gives 1 card, can't hit anymore)
 	// >>b1>> split function if 2 initial cards === value > splits hand to var splitHand, runs hitOrStand for each card in splitHand
 // dealerPlay hits until hand <= 17
@@ -154,6 +154,16 @@ function calcPlayer() {
 	}
 	// return handTotal
 };
+
+// ask user if 
+function hitOrStand() {
+	if (playerHand.length === 2) {
+		setTimeout(function() {
+			alert("Boom!");
+		}, 2000);
+	}
+};
+
 
 function compareHand() {
 	// if (handTotal = 21) {
