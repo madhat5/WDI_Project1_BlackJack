@@ -113,10 +113,6 @@ input {
 	color: black;
 }
 
-#game-buttons {
-	border-radius: 30%;
-}
-
 .game-options {
 	position: absolute;
 	/*right: 0%;*/
@@ -124,4 +120,8 @@ input {
 	width: 100px;
 	height: 125px;
 	color: black;
+}
+
+button {
+	border-radius: 45%;
 }

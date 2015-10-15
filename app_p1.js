@@ -55,7 +55,7 @@ var gameDeck = {
 // dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
 // betting functions
-// placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in bet input, calls 
+// placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in bet input, calls deal cards
 // calcHand sums current playerHand[x], calculates after 2 cards dealt, and hit
 	// if (initial) playerHand = 21, player wins (1.5x bet) 
 	// if playerHand > 21, Bust!
@@ -119,6 +119,15 @@ function dealCards() {
 	}
 	console.log(playerHand);
 };
+
+// placeBet function
+$('#bet-button').click() {
+	var userInput = $('#bet-button').value; //not .innerHTML right?
+	bankRoll -= userInput;
+	playerBet = userInput;
+
+	// dealCards();
+}	
 
 
 //////////////////////////////////////////
