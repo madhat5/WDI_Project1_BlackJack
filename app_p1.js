@@ -56,16 +56,17 @@ var gameDeck = {
 
 // betting functions
 // placeBet.click takes var userInput bet, subtracts userInput from bankRoll, adds userInput to playerBet, displays in player bet div, calls deal cards
-// calcHand sums current playerHand[x], calculates after 2 cards dealt, and hit
+// calcPlayer sums current playerHand[x], calculates after 2 cards dealt, and hit
 	// if (initial) playerHand = 21, player wins (1.5x bet) 
 	// if playerHand > 21, Bust!
 // hitOrStand asks user after 2 card dealt if want to hit (+1 card) or stay (break) 
-	// >>b1>> after first 2 cards dealt, user has double down option (can also double down on split), then calcHand (doubleDown gives 1 card, can't hit anymore)
+	// >>b1>> after first 2 cards dealt, user has double down option (can also double down on split), then calcPlayer (doubleDown gives 1 card, can't hit anymore)
 	// >>b1>> split function if 2 initial cards === value > splits hand to var splitHand, runs hitOrStand for each card in splitHand
 // dealerPlay hits until hand <= 17
-// compareHand compares current player hand to dealer:
-	// if playerHand < 21 && > dealerHand, player wins, add bet x2 to bankRoll 
-	// if playerHand < 21 && < dealerHand, dealer wins
+	// also calcDealer using dealerHand
+// compareHand compares current playerHand to dealer:
+	// if calcPlayer < 21 && > calcDealer, player wins, add bet x2 to bankRoll 
+	// if calcPlayer < 21 && < calcDealer, dealer wins
 
 // game functions
 // startGame.click, takes user inputs (human players, ai) and waits for placeBet.click (game-setup && start button disappears)
@@ -102,12 +103,12 @@ function createDeck() {
 };
 
 // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
-// refactor after calcHand done
+// refactor after calcPlayer done
 // handles Ace behaviour
 function softAce() {
 	for (var x = 0; x < playerHand.length; x++) {
 		if (playerHand[x] === card.name('A')) {
-			if (calcHand > 21) {
+			if (calcPlayer > 21) {
 				card.name('A').value // change to 1;
 			}
 		}
@@ -123,7 +124,7 @@ function dealCards() {
 };
 
 // placeBet function handles user bet input, bankroll update, bet display, card deal start
-$('#bet-button').click() {
+$('#bet-button').click(function() {
 	var userInput = $('#bet-button').value; //not .innerHTML right?
 	
 	bankRoll -= userInput;
@@ -132,7 +133,35 @@ $('#bet-button').click() {
 	$('#player-bet').innerHTML = userInput;
 
 	dealCards();
-}	
+});
+
+// takes playerHand and sums +after hits  
+function calcPlayer() {
+	if (playerHand[0].value + playerHand[1].value === 21) {
+		bankroll += ((userInput * 1.5) + userInput);
+		// reset bet, reset hand
+		alert('BlackJack!');
+	}
+
+	var handTotal;
+	for (var x = 0; x < playerHand.length; x++) {
+		handTotal += playerHand[x].value;
+	}
+	console.log(handTotal)
+
+	if (handTotal > 21) {
+		alert('Player Bust! Learn to count')
+	}
+	// return handTotal
+};
+
+function compareHand() {
+	// if (handTotal = 21) {
+	// 	alert('You Won!');
+	// 	bankroll += (userInput * 2);
+};
+
+
 
 
 //////////////////////////////////////////
@@ -140,3 +169,4 @@ $('#bet-button').click() {
 // MISC NOTES //
 // fund/bet changes as diff player takes turn
 // do i need an empty array for house$ (user money lost)?
+// difference btw reset button, and win hand (just resets bet + hand, add winnings to bankRoll)
