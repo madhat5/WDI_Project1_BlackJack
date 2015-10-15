@@ -1,7 +1,6 @@
 body {
 	background-image: url('materials/gameboard.png');
     background-size: cover; 
-    /*min-height: 100%;*/
 }
 
 h1 {
@@ -31,7 +30,6 @@ h1 {
 	width: 250px;
 	margin-left: 75%;
 	margin-top: -17%;
-	/*position: absolute;*/
 }
 
 #player-funds {
@@ -54,9 +52,6 @@ h1 {
 	width: 100px;
 	height: 125px;
 	color: black;
-	/*margin-left: 50%;
-	margin-top: 5%;
-	bottom: -15%;*/
 }
 
 #dealer-first {
@@ -64,8 +59,6 @@ h1 {
 	border: 1px solid black;
 	height: 125px;
 	display: inline-block;
-	/*width: 50%;*/
-	/*display: ;*/
 }
 
 #dealer-second {
@@ -82,9 +75,6 @@ h1 {
 	width: 100px;
 	height: 125px;
 	color: black;
-	/*margin-left: 50%;
-	margin-top: 5%;
-	bottom: -15%;*/
 }
 
 #player-first {
@@ -92,8 +82,6 @@ h1 {
 	border: 1px solid black;
 	height: 125px;
 	display: inline-block;
-	/*width: 50%;*/
-	/*display: ;*/
 }
 
 #player-second {
@@ -103,5 +91,24 @@ h1 {
 	display: inline-block;
 }
 
-/*stack inputs, place center*/
-/*stack buttons, place center to right of inputs*/
+.game-setup {
+	position: absolute;
+	right: 55%;
+	top: 15%;
+	width: 100px;
+	height: 125px;
+	color: black;
+}
+
+input {
+	margin-bottom: 5px;
+}
+
+.game-play {
+	position: absolute;
+	right: 40%;
+	top: 15%;
+	width: 100px;
+	height: 125px;
+	color: black;
+}
