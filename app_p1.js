@@ -119,17 +119,17 @@ function softAce() {
 };
 
 // dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
-// need
 // add parent loop that goes through playersAtTable
 function dealCards() {
 	for (var x = 0; x <= 2; x++) {
-		playerHand[x] = gameShoe.splice(x);
+		playerHand[x] = gameShoe.splice(x); // unshift?
 	}
 
 	for (var x = 0; x <= 2; x++) {
-		dealerHand[hitCount] = gameShoe.splice(x);
+		dealerHand[x] = gameShoe.splice(x); // unshift?
 	}
 	console.log(playerHand);
+	console.log(dealerHand);
 };
 
 // placeBet function handles user bet input, bankroll update, bet display, card deal start
@@ -167,7 +167,7 @@ function calcPlayer() {
 
 $('#hit-button').click(function() {
 	// console.log('hit works');
-	for (var hitCount = 0; hitCount; hitCount = playerHand.length) {
+	for (hitCount = 0; hitCount; hitCount = playerHand.length) {
 		playerHand[hitCount] = gameShoe.splice(x);
 	}
 });
@@ -187,12 +187,17 @@ $('#stand-button').click(function() {
 // };
 /////////////
 
+// dealer hits until dealerHand[i].value sum < 17
 function dealerPlay() {
-	
-	
 	var handTotal;
-	for (var x = 0; x < playerHand.length; x++) {
-		handTotal += playerHand[x].value;
+
+	for (var i = 0; i < 17; i++) {
+		dealerHand[i] = gameShoe.splice(x);
+	}
+
+	//  count that checks for dealer bust
+	for (var x = 0; x < dealerHand.length; x++) {
+		handTotal += dealerHand[x].value;
 	}
 
 
