@@ -116,13 +116,31 @@ input {
 
 .game-options {
 	position: absolute;
-	/*right: 0%;*/
 	top: 75%;
 	width: 100px;
 	height: 125px;
 	color: black;
 }
 
-button {
+/*button {
 	border-radius: 45%;
+}*/
+
+.card-deck{
+    width:40px;
+    height:60px;
+    border:1px solid #151718;
+    float:left;
+    margin-right:5px;
+    margin-bottom:5px;
+    border-radius:2px;
+    font-family:courier;
+    cursor:pointer;
+}
+
+span.number, span.suit{
+    width:100%;
+    display:block;
+    text-align:center;
+    padding-top:8px;
 }

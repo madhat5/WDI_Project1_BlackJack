@@ -81,7 +81,7 @@ var shoeDeck = {
 
 // gameDeck gives back 52 card deck, with correct BJ values
 // note: tie cards to playDeck
-function gameDeck() {										//<<<<<<<<<<<
+var gameDeck = function() {										//<<<<<<<<<<<
 	function card(value, name, suit){
 		this.value = value;
 		this.name = name;
@@ -104,26 +104,28 @@ function gameDeck() {										//<<<<<<<<<<<
 	}
 	// deck();
 	playDeck = deck();
+	console.log(playDeck)
 
 	window.onload = function() {
 
 		for(var i = 0; i < playDeck.length; i++) {
 			// div = document.createElement('div');
 			// div.className = 'card';
-			var $div = $('body').add('div').addClass('card');	
+			var $div = $('body').add('div').addClass('card-deck');	
 
 
 			if (playDeck[i].suit == 'Diamonds') {
 				var ascii_char = '♦';
 			} else {
-				var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+				var ascii_char = '&' + playDeck[i].suit.toLowerCase() + ';';
 			}
 
-			div.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
-			document.body.appendChild(div);
-	}
+			$div.innerHTML = '<span class="number">' + playDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
+			// document.body.appendChild(div);
+			// $("div.card-deck").html() = '' + myDeck[i].name + '' + ascii_char + '';
+		}
 
-}
+	}
 };
 
 // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
@@ -218,20 +220,20 @@ function dealerPlay() {								//<<<<<<<<<<<
 	// count that counts dealer hand value 
 	for (var x = 0; x < dealerHand.length; x++) {
 		handTotal += dealerHand[x].value;
-	}
+	};
 
-	if (handTotal 17 )
+	// if (handTotal 17 )
 
 	// gives dealer cards
 	for (var i = 0; i < 17; i++) {
 		dealerHand[i] = gameShoe.splice(x);
-	}
+	};
 
 	console.log(handTotal)
 
 	if (handTotal > 21) {
 		alert('Computer Bust! Player wins')
-	}
+	};
 };
 
 // compares current playerHand to dealer:
@@ -256,7 +258,7 @@ function compareHand() {
 
 
 var body = document.querySelector('body');
-console.log('body');
+console.log(body);
 //////////////////////////////////////////
 //////////////////////////////////////////
 // MISC NOTES //
