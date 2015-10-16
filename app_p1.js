@@ -61,11 +61,12 @@ var gameDeck = {
 	// --x--if (initial) playerHand = 21, player wins (1.5x bet) 
 	// --x--if playerHand > 21, Bust!
 // hitOrStand
-//--x--hit.click user after 2 card dealt if want to hit (+1 card) or stand.click stand calls dealerPlay
+// --x--hit.click user after 2 card dealt if want to hit (+1 card) or stand.click stand calls dealerPlay
 	// >>b1>> after first 2 cards dealt, user has double down option (can also double down on split), then calcPlayer (doubleDown gives 1 card, can't hit anymore)
 	// >>b1>> split function if 2 initial cards === value > splits hand to var splitHand, runs hitOrStand for each card in splitHand
 // dealerPlay hits until hand <= 17
 	// also calcDealer using dealerHand
+	// combine calcPlayer/hit/stand
 // compareHand compares current playerHand to dealer:
 	// if calcPlayer < 21 && > calcDealer, player wins, add bet x2 to bankRoll 
 	// if calcPlayer < 21 && < calcDealer, dealer wins
@@ -117,10 +118,16 @@ function softAce() {
 	}
 };
 
-// dealCards gives 2 cards to each player,then to dealer; splice b/c need to retain order (already shuffled)
+// dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
+// need
+// add parent loop that goes through playersAtTable
 function dealCards() {
 	for (var x = 0; x <= 2; x++) {
 		playerHand[x] = gameShoe.splice(x);
+	}
+
+	for (var x = 0; x <= 2; x++) {
+		dealerHand[hitCount] = gameShoe.splice(x);
 	}
 	console.log(playerHand);
 };
@@ -170,7 +177,6 @@ $('#stand-button').click(function() {
 	dealerPlay(); //with settimeout
 });
 
-
 /////////////
 // function hitOrStand() {
 // 	if (playerHand.length === 2) {
@@ -180,6 +186,22 @@ $('#stand-button').click(function() {
 // 	}
 // };
 /////////////
+
+function dealerPlay() {
+	
+	
+	var handTotal;
+	for (var x = 0; x < playerHand.length; x++) {
+		handTotal += playerHand[x].value;
+	}
+
+
+	console.log(handTotal)
+
+	if (handTotal > 21) {
+		alert('Computer Bust! Player wins')
+	}
+};
 
 function compareHand() {
 	// if (handTotal = 21) {
