@@ -108,12 +108,12 @@ function gameDeck() {										//<<<<<<<<<<<
 	window.onload = function() {
 
 		for(var i = 0; i < playDeck.length; i++) {
-			div = document.createElement('div');
-			div.className = 'card';
+			// div = document.createElement('div');
+			// div.className = 'card';
 			var $div = $('body').add('div').addClass('card');	
 
 
-			if (myDeck[i].suit == 'Diamonds') {
+			if (playDeck[i].suit == 'Diamonds') {
 				var ascii_char = '♦';
 			} else {
 				var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
