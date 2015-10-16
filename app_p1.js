@@ -23,19 +23,21 @@ console.log('sim sim salabim');
 // >>>>b2>> aiHand for user option play with ai/players vs dealer mix 
 
 
-// gameDeck holds/handles playable deck 
+// shoeDeck holds/handles playable deck 
 var deckCount = 1;
 var gameShoe = [];
+var playDeck;
 
-var gameDeck = {
-	deck52: [],
-	deckShuffled: [],
-	// this goes into createDeck
-	shuffle: function(deck52) {
-		for (var j, x, i = deck52.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-			deckShuffled[x];
-		return deckShuffled;
-	},
+var shoeDeck = {
+	// deck52: [],
+	// deckShuffled: [],
+	// // this goes into gameDeck
+	// shuffle: function(deck52) {
+	// 	for (var j, x, i = deck52.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	// 		deckShuffled[x];
+	// 	return deckShuffled;
+	// },
+	deck: gameDeck,
 	shoe: function() {
 		for (var x = 0; x <= deckCount; x++) {
 			gameShoe[x] = deckShuffled.pop(); //sinon use .splice(x)
@@ -50,8 +52,8 @@ var gameDeck = {
 // Functions //
 
 // card functions
-// --x--shuffle/randomize (already included in gameDeck{} object)
-// createDeck function, gives deck52 an array
+// --x--shuffle/randomize (already included in shoeDeck{} object)
+// gameDeck function, gives deck52 an array -----------------------<<<<<<<still true??????
 // softAce function controls ace value (ace = 11; if hand + ace > 21, ace = 1)
 // --x--dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
@@ -67,7 +69,7 @@ var gameDeck = {
 // dealerPlay hits until hand <= 17
 	// also calcDealer using dealerHand
 	// combine calcPlayer/hit/stand
-// compareHand compares current playerHand to dealer:
+// --x--compareHand compares current playerHand to dealer:
 	// if calcPlayer < 21 && > calcDealer, player wins, add bet x2 to bankRoll 
 	// if calcPlayer < 21 && < calcDealer, dealer wins
 
@@ -77,9 +79,9 @@ var gameDeck = {
 // resetGame.click, sets all game-inputs and bets to null, resets funds, goes to pre-startGame screen
 
 
-// createDeck gives back 52 card deck, with correct BJ values
-// note: tie cards to deck52
-function createDeck() {
+// gameDeck gives back 52 card deck, with correct BJ values
+// note: tie cards to playDeck
+function gameDeck() {										//<<<<<<<<<<<
 	function card(value, name, suit){
 		this.value = value;
 		this.name = name;
@@ -97,12 +99,31 @@ function createDeck() {
         	    cards.push( new card( this.value[i], this.names[i], this.suits[x]) );
         	}
     	}
-    	console.log(cards);
-    	// return cards;
-		// console.log(deck52);
-		// return deck52;
+    	// console.log(cards);
+    	return cards;
 	}
-	deck();
+	// deck();
+	playDeck = deck();
+
+	window.onload = function() {
+
+		for(var i = 0; i < playDeck.length; i++) {
+			div = document.createElement('div');
+			div.className = 'card';
+			var $div = $('body').add('div').addClass('card');	
+
+
+			if (myDeck[i].suit == 'Diamonds') {
+				var ascii_char = '♦';
+			} else {
+				var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+			}
+
+			div.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
+			document.body.appendChild(div);
+	}
+
+}
 };
 
 // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
@@ -131,6 +152,7 @@ function dealCards() {
 	console.log(playerHand);
 	console.log(dealerHand);
 };
+
 
 // placeBet function handles user bet input, bankroll update, bet display, card deal start
 $('#bet-button').click(function() {
@@ -173,7 +195,9 @@ $('#hit-button').click(function() {
 });
 
 $('#stand-button').click(function() {
-	// console.log('stand works');
+	// console.log('stand works');		bankroll += ((userInput * 1.5) + userInput);
+		// reset bet, reset hand
+		alert('BlackJack!');
 	dealerPlay(); //with settimeout
 });
 
@@ -188,18 +212,20 @@ $('#stand-button').click(function() {
 /////////////
 
 // dealer hits until dealerHand[i].value sum < 17
-function dealerPlay() {
+function dealerPlay() {								//<<<<<<<<<<<
 	var handTotal;
 
-	for (var i = 0; i < 17; i++) {
-		dealerHand[i] = gameShoe.splice(x);
-	}
-
-	//  count that checks for dealer bust
+	// count that counts dealer hand value 
 	for (var x = 0; x < dealerHand.length; x++) {
 		handTotal += dealerHand[x].value;
 	}
 
+	if (handTotal 17 )
+
+	// gives dealer cards
+	for (var i = 0; i < 17; i++) {
+		dealerHand[i] = gameShoe.splice(x);
+	}
 
 	console.log(handTotal)
 
@@ -208,15 +234,29 @@ function dealerPlay() {
 	}
 };
 
+// compares current playerHand to dealer:
 function compareHand() {
-	// if (handTotal = 21) {
-	// 	alert('You Won!');
-	// 	bankroll += (userInput * 2);
+	if (calcPlayer(handTotal) <= 21 && calcPlayer(handTotal) > calcDealer(handTotal)) {
+		bankroll += (userInput * 2);
+		// reset bet, reset hand
+		alert('You Won!');
+	} else if (calcPlayer(handTotal) < 21 && calcPlayer(handTotal) < calcDealer(handTotal)) {
+		bankroll -= userInput;
+		// reset bet, reset hand
+		alert('Dealer wins.');
+	} else if (calcPlayer(handTotal) <= 21 && calcPlayer(handTotal) === calcDealer(handTotal)) {
+		bankRoll += userInput;
+		// reset bet, reset hand
+		alert('Push.');
+	}
 };
 
 
 
 
+
+var body = document.querySelector('body');
+console.log('body');
 //////////////////////////////////////////
 //////////////////////////////////////////
 // MISC NOTES //
