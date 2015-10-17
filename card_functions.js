@@ -1,4 +1,4 @@
-// console.log('sim sim salabim');
+console.log('sim sim salabim');
 
 // card functions
 // --x--shuffle/randomize (already included in shoeDeck{} object)
@@ -9,55 +9,64 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-// gameDeck gives back 52 card deck, with correct BJ values
-// note: tie cards to playDeck
-var gameDeck = function() {										//<<<<<<<<<<<
-	function card(value, name, suit) {
-		this.value = value;
-		this.name = name;
-		this.suit = suit;
-	};
+////////////////////////////////////////////////////////////////////////////////////
+// the gameDeck function below was a trial in generating my own deck. 
+// It works until the display portion (DOM Manipulation)
+// Solution: like the jqueyr library, i found a deck library which i cloned, loaded
+
+// // gameDeck gives back 52 card deck, with correct BJ values
+// // note: tie cards to playDeck
+// var gameDeck = function() {										//<<<<<<<<<<<
+// 	function card(value, name, suit) {
+// 		this.value = value;
+// 		this.name = name;
+// 		this.suit = suit;
+// 	};
 	
-	function deck(){
-		this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-		this.value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-		this.suits = ['Hearts','Diamonds','Spades','Clubs'];
-		var cards = [];
+// 	function deck(){
+// 		this.names = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+// 		this.values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+// 		this.suits = ['Hearts','Diamonds','Spades','Clubs'];
+// 		var cards = [];
     
-	    for( var x = 0; x < this.suits.length; x++ ) {
-    	    for( var i = 0; i < this.names.length; i++ ) {
-        	    cards.push( new card( this.value[i], this.names[i], this.suits[x]) );
-        	}
-    	};
-    	// console.log(cards);
-    	return cards;
-	};
-	// deck();
-	playDeck = deck();
-	console.log(playDeck);
-	playDeck;
+// 	    for( var x = 0; x < this.suits.length; x++ ) {
+//     	    for( var i = 0; i < this.names.length; i++ ) {
+//         	    cards.push( new card( this.values[i], this.names[i], this.suits[x]) ); // if doesn't work, change .values back to .value
+//         	}
+//     	};
+//     	// console.log(cards);
+//     	return cards;
+// 	};
+// 	// deck();
+// 	playDeck = deck();
+// 	console.log(playDeck.length);
+// 	playDeck;
 
-	var appendDeck = function() {
+// 	var appendDeck = function() {
 
-		for(var i = 0; i < playDeck.length; i++) {
-			// div = document.createElement('div');
-			// div.className = 'card';
-			var $div = $('body').add('div').addClass('card-deck');	
-			console.log($div);
+// 		for (var i = 0; i < playDeck.length; i++) {
+// 			div = document.createElement('div');
+// 			div.className = 'card';
+// 			// var $div = $('body').add('div').addClass('card-deck');	
+// 			// console.log($div);
 
-			// add symbols for other suits
-			if (playDeck[i].suit == 'Diamonds') {
-				var ascii_char = '♦';
-			} else {
-				var ascii_char = '&' + playDeck[i].suit.toLowerCase() + ';';
-			}
+// 			// add symbols for other suits
+// 			if (playDeck[i].suit == 'Diamonds') {
+// 				var ascii_char = '♦';
+// 			} else {
+// 				var ascii_char = '&' + playDeck[i].suit.toLowerCase() + ';';
+// 			}
 
-			// document.body.appendChild(div);
-			$div.html('<span class="number">' + playDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>');
-		}
-	};
-	// appendDeck();
-};
+// 			div.innerHTML = '<span class="number">' + playdDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
+// 			document.body.appendChild(div);
+// 			// $div.html('<span class="number">' + playDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>');
+// 		}
+// 	};
+// 	// appendDeck();
+// };
+////////////////////////////////////////////////////////////////////////////////////
+
+// setup card-library js call here
 
 // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
 // refactor after calcPlayer done
@@ -85,3 +94,10 @@ function dealCards() {
 	console.log(playerHand);
 	console.log(dealerHand);
 };
+
+
+
+
+
+// var body = document.querySelector('body');
+// console.log(body);
