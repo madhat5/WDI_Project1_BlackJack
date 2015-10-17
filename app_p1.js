@@ -37,7 +37,7 @@ var shoeDeck = {
 	// 		deckShuffled[x];
 	// 	return deckShuffled;
 	// },
-	deck: gameDeck,
+	// deck: gameDeck, (card library)
 	shoe: function() {
 		for (var x = 0; x <= deckCount; x++) {
 			gameShoe[x] = deckShuffled.pop(); //sinon use .splice(x)
