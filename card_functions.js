@@ -9,108 +9,110 @@ console.log('sim sim salabim');
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
+console.log(playingCards);
 
-// setup card-library js call here
-$(document).ready(function() {
-    var cardDeck = $("#cardDeck").playingCards();
-    cardDeck.spread(); // show it
-	var hand = [];
+// // setup card-library js call here
+// $(document).ready(function() {
+//     var cardDeck = $("#cardDeck").playingCards();
+//     cardDeck.spread(); // show it
+// 	var hand = [];
 	
-	var showError = function(msg) {
-		$('#error').html(msg).show();
-		setTimeout(function(){
-			$('#error').fadeOut('slow');
-		},3000);
-	};
-
-	var showHand = function(){
-		var el = $('#yourHand');
-		el.html('');
+// 	var showError = function(msg) {
+// 		$('#error').html(msg).show();
 		
-		for(var i=0;i<hand.length;i++){
-			el.append(hand[i].getHTML());
-		}
-	};
+// 		setTimeout(function() {
+// 			$('#error').fadeOut('slow');
+// 		},3000);
+// 	};
 
-	var doShuffle = function() {
-		cardDeck.shuffle();
-		cardDeck.spread(); // update card table
-	};
+// 	var showHand = function() {
+// 		var el = $('#yourHand');
+// 		el.html('');
+		
+// 		for(var i=0;i<hand.length;i++){
+// 			el.append(hand[i].getHTML());
+// 		};
+// 	};
+
+// 	var doShuffle = function() {
+// 		cardDeck.shuffle();
+// 		cardDeck.spread(); // update card table
+// 	};
 	
-	var doDrawCard = function() {
-		var c = cardDeck.draw();
-		if (!c) {
-			showError('no more cards');
-			return;
-		};
+// 	var doDrawCard = function() {
+// 		var c = cardDeck.draw();
+// 		if (!c) {
+// 			showError('no more cards');
+// 			return;
+// 		};
 
-		hand[hand.length] = c;
-		cardDeck.spread();
-		showHand();
-	};
+// 		hand[hand.length] = c;
+// 		cardDeck.spread();
+// 		showHand();
+// 	};
 
-	var doOrderByRank = function() {
-		cardDeck.orderByRank();
-		cardDeck.spread(); // update card table
-	};
+// 	var doOrderByRank = function() {
+// 		cardDeck.orderByRank();
+// 		cardDeck.spread(); // update card table
+// 	};
 
-	var doOrderBySuit = function() {
-		cardDeck.orderBySuit();
-		cardDeck.spread(); // update card table
-	};
+// 	var doOrderBySuit = function() {
+// 		cardDeck.orderBySuit();
+// 		cardDeck.spread(); // update card table
+// 	};
 
-	$('#shuffler').click(doShuffle);
-	$('#draw').click(doDrawCard);
+// 	$('#shuffler').click(doShuffle);
+// 	$('#draw').click(doDrawCard);
 	
-	$('#shuffleDraw').click(function() {
-		doShuffle();
-		doDrawCard();
-	});
+// 	$('#shuffleDraw').click(function() {
+// 		doShuffle();
+// 		doDrawCard();
+// 	});
 	
-	$('#addCard').click(function() {
-		if(!hand.length) {
-			showError('your hand is empty');
-			return;
-		};
+// 	$('#addCard').click(function() {
+// 		if(!hand.length) {
+// 			showError('your hand is empty');
+// 			return;
+// 		};
 
-		var c = hand.pop();
-		showHand();
-		cardDeck.addCard(c);
-		cardDeck.spread();
-	});
+// 		var c = hand.pop();
+// 		showHand();
+// 		cardDeck.addCard(c);
+// 		cardDeck.spread();
+// 	});
 
-	$('#orderByRank').click(doOrderByRank);
-	$('#orderBySuit').click(doOrderBySuit);
-});
+// 	$('#orderByRank').click(doOrderByRank);
+// 	$('#orderBySuit').click(doOrderBySuit);
+// });
 
 
 
-// set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
-// refactor after calcPlayer done
-// handles Ace behaviour
-function softAce() {
-	for (var x = 0; x < playerHand.length; x++) {
-		if (playerHand[x] === card.name('A')) {
-			if (calcPlayer > 21) {
-				card.name('A').value // change to 1;
-			}
-		}
-	}
-};
+// // set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
+// // refactor after calcPlayer done
+// // handles Ace behaviour
+// function softAce() {
+// 	for (var x = 0; x < playerHand.length; x++) {
+// 		if (playerHand[x] === card.name('A')) {
+// 			if (calcPlayer > 21) {
+// 				card.name('A').value // change to 1;
+// 			}
+// 		}
+// 	}
+// };
 
-// dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
-// add parent loop that goes through playersAtTable
-function dealCards() {
-	for (var x = 0; x <= 2; x++) {
-		playerHand[x] = gameShoe.splice(x); // unshift?
-	}
+// // dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
+// // add parent loop that goes through playersAtTable
+// function dealCards() {
+// 	for (var x = 0; x <= 2; x++) {
+// 		playerHand[x] = gameShoe.splice(x); // unshift?
+// 	}
 
-	for (var x = 0; x <= 2; x++) {
-		dealerHand[x] = gameShoe.splice(x); // unshift?
-	}
-	console.log(playerHand);
-	console.log(dealerHand);
-};
+// 	for (var x = 0; x <= 2; x++) {
+// 		dealerHand[x] = gameShoe.splice(x); // unshift?
+// 	}
+// 	console.log(playerHand);
+// 	console.log(dealerHand);
+// };
 
 
 
