@@ -9,10 +9,53 @@ console.log('sim sim salabim');
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
+
+// setup card-library js call here
+
+// set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
+// refactor after calcPlayer done
+// handles Ace behaviour
+function softAce() {
+	for (var x = 0; x < playerHand.length; x++) {
+		if (playerHand[x] === card.name('A')) {
+			if (calcPlayer > 21) {
+				card.name('A').value // change to 1;
+			}
+		}
+	}
+};
+
+// dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
+// add parent loop that goes through playersAtTable
+function dealCards() {
+	for (var x = 0; x <= 2; x++) {
+		playerHand[x] = gameShoe.splice(x); // unshift?
+	}
+
+	for (var x = 0; x <= 2; x++) {
+		dealerHand[x] = gameShoe.splice(x); // unshift?
+	}
+	console.log(playerHand);
+	console.log(dealerHand);
+};
+
+
+
+
+
+// var body = document.querySelector('body');
+// console.log(body);
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 // the gameDeck function below was a trial in generating my own deck. 
 // It works until the display portion (DOM Manipulation)
-// Solution: like the jqueyr library, i found a deck library which i cloned, loaded
+// Solution: like the jquery library, i found a deck library on git which i cloned, then loaded
 
 // // gameDeck gives back 52 card deck, with correct BJ values
 // // note: tie cards to playDeck
@@ -65,39 +108,3 @@ console.log('sim sim salabim');
 // 	// appendDeck();
 // };
 ////////////////////////////////////////////////////////////////////////////////////
-
-// setup card-library js call here
-
-// set as function in playerHand, where checks cards in hand, for x < playerHand.length, if playerHand[x] === card.name('A'), replace value to 11
-// refactor after calcPlayer done
-// handles Ace behaviour
-function softAce() {
-	for (var x = 0; x < playerHand.length; x++) {
-		if (playerHand[x] === card.name('A')) {
-			if (calcPlayer > 21) {
-				card.name('A').value // change to 1;
-			}
-		}
-	}
-};
-
-// dealCards gives 2 cards to each player, then to dealer; splice b/c need to retain order (already shuffled)
-// add parent loop that goes through playersAtTable
-function dealCards() {
-	for (var x = 0; x <= 2; x++) {
-		playerHand[x] = gameShoe.splice(x); // unshift?
-	}
-
-	for (var x = 0; x <= 2; x++) {
-		dealerHand[x] = gameShoe.splice(x); // unshift?
-	}
-	console.log(playerHand);
-	console.log(dealerHand);
-};
-
-
-
-
-
-// var body = document.querySelector('body');
-// console.log(body);

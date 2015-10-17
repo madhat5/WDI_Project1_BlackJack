@@ -122,11 +122,19 @@ input {
 	color: black;
 }
 
-/*button {
+button {
 	border-radius: 45%;
-}*/
+}
 
-.card-deck{
+
+
+
+
+
+
+
+/*below is associated with manual deck builder*/
+/*.card-deck{
     width:40px;
     height:60px;
     border:1px solid #151718;
@@ -143,4 +151,4 @@ span.number, span.suit{
     display:block;
     text-align:center;
     padding-top:8px;
-}
+}*/
