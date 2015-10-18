@@ -9,81 +9,83 @@ console.log('sim sim salabim');
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-console.log(playingCards);
+// console.log(playingCards);
+// test();
 
-// // setup card-library js call here
-// $(document).ready(function() {
-//     var cardDeck = $("#cardDeck").playingCards();
-//     cardDeck.spread(); // show it
-// 	var hand = [];
+// setup card-library js call here
+$(document).ready(function() {
+	// console.log(playingCards);
+    var cardDeck = $("#cardDeck").playingCards();
+    cardDeck.spread(); // show it
+	var hand = [];
 	
-// 	var showError = function(msg) {
-// 		$('#error').html(msg).show();
+	var showError = function(msg) {
+		$('#error').html(msg).show();
 		
-// 		setTimeout(function() {
-// 			$('#error').fadeOut('slow');
-// 		},3000);
-// 	};
+		setTimeout(function() {
+			$('#error').fadeOut('slow');
+		},3000);
+	};
 
-// 	var showHand = function() {
-// 		var el = $('#yourHand');
-// 		el.html('');
+	var showHand = function() {
+		var el = $('#yourHand');
+		el.html('');
 		
-// 		for(var i=0;i<hand.length;i++){
-// 			el.append(hand[i].getHTML());
-// 		};
-// 	};
+		for(var i=0;i<hand.length;i++){
+			el.append(hand[i].getHTML());
+		};
+	};
 
-// 	var doShuffle = function() {
-// 		cardDeck.shuffle();
-// 		cardDeck.spread(); // update card table
-// 	};
+	var doShuffle = function() {
+		cardDeck.shuffle();
+		cardDeck.spread(); // update card table
+	};
 	
-// 	var doDrawCard = function() {
-// 		var c = cardDeck.draw();
-// 		if (!c) {
-// 			showError('no more cards');
-// 			return;
-// 		};
+	var doDrawCard = function() {
+		var c = cardDeck.draw();
+		if (!c) {
+			showError('no more cards');
+			return;
+		};
 
-// 		hand[hand.length] = c;
-// 		cardDeck.spread();
-// 		showHand();
-// 	};
+		hand[hand.length] = c;
+		cardDeck.spread();
+		showHand();
+	};
 
-// 	var doOrderByRank = function() {
-// 		cardDeck.orderByRank();
-// 		cardDeck.spread(); // update card table
-// 	};
+	var doOrderByRank = function() {
+		cardDeck.orderByRank();
+		cardDeck.spread(); // update card table
+	};
 
-// 	var doOrderBySuit = function() {
-// 		cardDeck.orderBySuit();
-// 		cardDeck.spread(); // update card table
-// 	};
+	var doOrderBySuit = function() {
+		cardDeck.orderBySuit();
+		cardDeck.spread(); // update card table
+	};
 
-// 	$('#shuffler').click(doShuffle);
-// 	$('#draw').click(doDrawCard);
+	$('#shuffler').click(doShuffle);
+	$('#draw').click(doDrawCard);
 	
-// 	$('#shuffleDraw').click(function() {
-// 		doShuffle();
-// 		doDrawCard();
-// 	});
+	$('#shuffleDraw').click(function() {
+		doShuffle();
+		doDrawCard();
+	});
 	
-// 	$('#addCard').click(function() {
-// 		if(!hand.length) {
-// 			showError('your hand is empty');
-// 			return;
-// 		};
+	$('#addCard').click(function() {
+		if(!hand.length) {
+			showError('your hand is empty');
+			return;
+		};
 
-// 		var c = hand.pop();
-// 		showHand();
-// 		cardDeck.addCard(c);
-// 		cardDeck.spread();
-// 	});
+		var c = hand.pop();
+		showHand();
+		cardDeck.addCard(c);
+		cardDeck.spread();
+	});
 
-// 	$('#orderByRank').click(doOrderByRank);
-// 	$('#orderBySuit').click(doOrderBySuit);
-// });
+	$('#orderByRank').click(doOrderByRank);
+	$('#orderBySuit').click(doOrderBySuit);
+});
 
 
 
@@ -116,13 +118,8 @@ console.log(playingCards);
 
 
 
-
-
 // var body = document.querySelector('body');
 // console.log(body);
-
-
-
 
 
 
