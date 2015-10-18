@@ -2,7 +2,7 @@ console.log('sim sim salabim');
 
 // card functions
 // --x--shuffle/randomize (already included in shoeDeck{} object)
-// gameDeck function, gives deck52 an array -----------------------<<<<<<<still true??????
+// --x--gameDeck function, gives deck52 an array -----------------------<<<<<<<still true??????
 // softAce function controls ace value (ace = 11; if hand + ace > 21, ace = 1)
 // --x--dealCards takes 2 cards from shoe, gives them to playerHand (splice()) and dealerHand
 
@@ -18,6 +18,7 @@ $(document).ready(function() {
     var cardDeck = $("#cardDeck").playingCards();
     // cardDeck.spread(); // show it
 	var hand = [];
+	var handDealer =[]
 	
 	var showError = function(msg) {
 		$('#error').html(msg).show();
@@ -36,6 +37,15 @@ $(document).ready(function() {
 		};
 	};
 
+	var showDealer = function() {
+		var el = $('#dealerHand');
+		el.html('');
+		
+		for(var i=0;i<handDealer.length;i++){
+			el.append(handDealer[i].getHTML());
+		};
+	};	
+
 	var doShuffle = function() {
 		cardDeck.shuffle();
 		cardDeck.spread(); // update card table
@@ -48,10 +58,56 @@ $(document).ready(function() {
 			return;
 		};
 
+		// tried to do if statment for handing out cards
+		// if ($('#draw').click(this)) {
 		hand[hand.length] = c;
-		// cardDeck.spread();
 		showHand();
+		// } else if ($('#stand').click(doStand)) {
+		// 	dealerHand[dealerHand.length] = c;
+		// 	showDealer();
+		// }
 	};
+
+	var dealerDrawCard = function() {
+		var c = cardDeck.draw();
+		if (!c) {
+			showError('no more cards');
+			return;
+		};
+
+		handDealer[handDealer.length] = c;
+		showDealer();
+	};
+
+	var doStand = function() {
+		// console.log('hello')
+		for (var x = 0; x < 4; x++) {
+			dealerDrawCard();
+		};
+	};
+
+
+
+
+	// takes >>>playerHand<<< and sums +after hit  
+	function calcPlayer() {
+	if (playerHand[0].value + playerHand[1].value === 21) {
+		bankroll += ((userInput * 1.5) + userInput);
+		// reset bet, reset hand
+		alert('BlackJack!');
+	}
+
+	var handTotal;
+	for (var x = 0; x < playerHand.length; x++) {
+		handTotal += playerHand[x].value;
+	}
+	console.log(handTotal)
+
+	if (handTotal > 21) {
+		alert('Player Bust! Learn to count')
+	}
+	// return handTotal
+};
 
 // use the below to figure out value so can modify value/ calculate winner 
 	// var doOrderByRank = function() { 
@@ -61,7 +117,8 @@ $(document).ready(function() {
 
 	$('#shuffler').click(doShuffle);
 	$('#draw').click(doDrawCard);
-	
+	$('#stand').click(doStand);	
+
 	$('#shuffleDraw').click(function() {
 		doShuffle();
 		doDrawCard();
@@ -78,9 +135,6 @@ $(document).ready(function() {
 		cardDeck.addCard(c);
 		cardDeck.spread();
 	});
-
-	$('#orderByRank').click(doOrderByRank);
-	$('#orderBySuit').click(doOrderBySuit);
 });
 
 

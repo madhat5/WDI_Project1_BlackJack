@@ -2,9 +2,9 @@ body {
 	background-image: url('materials/gameboard.png');
     background-size: cover; 
 	margin-top: 1.0em;
-	background-color: #fff;
-	font-family: "Helvetica,Arial,FreeSans";
-	color: #000000;
+	/*background-color: #fff;*/
+	/*font-family: "Helvetica,Arial,FreeSans";*/
+	/*color: #000000;*/
 }
 
 h1 {
@@ -131,11 +131,14 @@ button {
 }
 
 h2 { 
-	font-size: 1.5em; color: #64052a; 
+	font-size: 1.5em; 
+	color: white; 
 }
         
 hr { 
-	border: 0; width: 80%; border-bottom: 1px solid #aaa
+	border: 0; 
+	width: 80%; 
+	border-bottom: 1px solid #aaa
 }
 
 h2 {
@@ -143,7 +146,11 @@ h2 {
 }
     
 #error {
-	display:none;color:#f00;border:1px solid #f60;padding:5px;margin:5px;
+	display:none;
+	color:#f00;
+	border:1px solid #f60;
+	padding:5px;
+	margin:5px;
 }
 
 
