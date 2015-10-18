@@ -16,7 +16,7 @@ console.log('sim sim salabim');
 $(document).ready(function() {
 	// console.log(playingCards);
     var cardDeck = $("#cardDeck").playingCards();
-    cardDeck.spread(); // show it
+    // cardDeck.spread(); // show it
 	var hand = [];
 	
 	var showError = function(msg) {
@@ -49,19 +49,15 @@ $(document).ready(function() {
 		};
 
 		hand[hand.length] = c;
-		cardDeck.spread();
+		// cardDeck.spread();
 		showHand();
 	};
 
-	var doOrderByRank = function() {
-		cardDeck.orderByRank();
-		cardDeck.spread(); // update card table
-	};
-
-	var doOrderBySuit = function() {
-		cardDeck.orderBySuit();
-		cardDeck.spread(); // update card table
-	};
+// use the below to figure out value so can modify value/ calculate winner 
+	// var doOrderByRank = function() { 
+	// 	cardDeck.orderByRank();
+	// 	cardDeck.spread(); // update card table
+	// };
 
 	$('#shuffler').click(doShuffle);
 	$('#draw').click(doDrawCard);
