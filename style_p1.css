@@ -49,14 +49,14 @@ h1 {
 	border-radius: 13px;
 }
 
-.dealer-cards {
+/*.dealer-cards {
 	position: absolute;
 	right: 50%;
 	top: 40%;
 	width: 100px;
 	height: 125px;
 	color: black;
-}
+}*/
 
 #dealer-first {
 	background-color: white;
@@ -72,14 +72,17 @@ h1 {
 	display: inline-block;
 }
 
-.player-cards {
+/*.player-cards {
+	position: absolute;
+	right: 60%;
+	top: 75%;
 	position: absolute;
 	right: 65%;
 	top: 75%;
 	width: 100px;
 	height: 125px;
 	color: black;
-}
+}*/
 
 #player-first {
 	background-color: white;
@@ -104,10 +107,10 @@ h1 {
 	color: black;
 }
 
-input {
+/*input {
 	margin-bottom: 5px;
 	font-style: italic;
-}
+}*/
 
 .game-play {
 	position: absolute;
@@ -126,9 +129,9 @@ input {
 	color: black;
 }
 
-button {
+/*button {
 	border-radius: 45%;
-}
+}*/
 
 h2 { 
 	font-size: 1.5em; 
@@ -153,6 +156,17 @@ h2 {
 	margin:5px;
 }
 
+#yourHand {
+	position: absolute;
+	right: 60%;
+	top: 75%;	
+}
+
+#dealerHand {
+	position: absolute;
+	right: 40%;
+	top: 40%;
+}
 
 /*/////////////////////////////////////*/
 

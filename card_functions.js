@@ -19,6 +19,7 @@ $(document).ready(function() {
     // cardDeck.spread(); // show it
 	var hand = [];
 	var handDealer =[]
+	// console.log(handDealer);
 	
 	var showError = function(msg) {
 		$('#error').html(msg).show();
