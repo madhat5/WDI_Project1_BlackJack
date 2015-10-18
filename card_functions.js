@@ -49,7 +49,7 @@ $(document).ready(function() {
 
 	var doShuffle = function() {
 		cardDeck.shuffle();
-		cardDeck.spread(); // update card table
+		// cardDeck.spread(); // update card table
 	};
 	
 	var doDrawCard = function() {
@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 
 
-
+	var $dealerHandFind = $ 
 	// takes >>>playerHand<<< and sums +after hit  
 	function calcPlayer() {
 	if (playerHand[0].value + playerHand[1].value === 21) {
@@ -119,23 +119,32 @@ $(document).ready(function() {
 	$('#shuffler').click(doShuffle);
 	$('#draw').click(doDrawCard);
 	$('#stand').click(doStand);	
-
-	$('#shuffleDraw').click(function() {
-		doShuffle();
-		doDrawCard();
-	});
 	
-	$('#addCard').click(function() {
-		if(!hand.length) {
-			showError('your hand is empty');
-			return;
-		};
+	// add function call before dealerDrawCard that runs player turn (value count)
+	// add call after dealerDrawCard that runs dealer auto play
+	$('#start').click(function() {
+		for (var x = 0; x < 2; x++) {
+			doDrawCard();
+			dealerDrawCard();
+			// setTimeout(dealerDrawCard(), 50000); >>>> doesn't work??
+		}
+	});	
 
-		var c = hand.pop();
-		showHand();
-		cardDeck.addCard(c);
-		cardDeck.spread();
-	});
+	$('#reset').click(function() {
+		window.location.reload()
+	});	
+
+	// $('#addCard').click(function() {
+	// 	if(!hand.length) {
+	// 		showError('your hand is empty');
+	// 		return;
+	// 	};
+
+	// 	var c = hand.pop();
+	// 	showHand();
+	// 	cardDeck.addCard(c);
+	// 	cardDeck.spread();
+	// });
 });
 
 

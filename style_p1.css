@@ -107,23 +107,23 @@ h1 {
 	color: black;
 }
 
-/*input {
+input {
 	margin-bottom: 5px;
 	font-style: italic;
-}*/
+}
 
-.game-play {
+/*.game-play {
 	position: absolute;
 	right: 40%;
 	top: 15%;
 	width: 100px;
 	height: 125px;
 	color: black;
-}
+}*/
 
 .game-options {
 	position: absolute;
-	top: 75%;
+	top: 45%;
 	width: 100px;
 	height: 125px;
 	color: black;
@@ -166,6 +166,21 @@ h2 {
 	position: absolute;
 	right: 40%;
 	top: 40%;
+}
+
+#shuffler {
+	position: absolute;
+	right: 60%;
+}
+
+#draw {
+	position: absolute;
+	right: 50%;
+}
+
+#stand {
+	position: absolute;
+	right: 45%;
 }
 
 /*/////////////////////////////////////*/
