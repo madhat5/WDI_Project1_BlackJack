@@ -88,16 +88,21 @@ $(document).ready(function() {
 	};
 
 	// takes >>>playerHand<<< and sums +after hit  
-	var bankRoll;
-	
+	// var bankRoll;
+
 	function calcPlayer() {
-		if (playerHand[0].value + playerHand[1].value === 21) {
-			bankRoll += ((userInput * 1.5) + userInput);
-			// reset bet, reset hand
-			alert('BlackJack!');
-		}
+		// if (playerHand[0].value + playerHand[1].value === 21) {
+		// 	bankRoll += ((userInput * 1.5) + userInput);
+		// 	// reset bet, reset hand
+		// 	alert('BlackJack!');
+		// }
 
 		var handTotal;
+		var tempValue;
+
+		for (var x = 0; x < handDealer.length, x++)
+			$( "#dealerHand div:nth-child(" + x + ")").html()
+		
 		for (var x = 0; x < playerHand.length; x++) {
 			handTotal += playerHand[x].value;
 		}
@@ -107,7 +112,7 @@ $(document).ready(function() {
 			alert('Player Bust! Learn to count')
 		}
 		// return handTotal
-};
+	};
 
 // use the below to figure out value so can modify value/ calculate winner 
 	// var doOrderByRank = function() { 
@@ -177,8 +182,8 @@ $(document).ready(function() {
 
 
 
-// var body = document.querySelector('body');
-// console.log(body);
+var body = document.querySelector('body');
+console.log(body);
 
 
 
