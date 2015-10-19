@@ -95,7 +95,7 @@ $(document).ready(function() {
 		var tempValue;
 
 		for (var x = 0; x < handDealer.length; x++) {
-			handTotal += $( "#dealerHand div:nth-child(" + x + ")").value;
+			handTotal += $('#dealerHand').text		//$( "#dealerHand div:nth-child(" + x + ")").value;
 			console.log(handTotal);
 
 			if (x === 1 && handTotal === 21) {
@@ -123,7 +123,7 @@ $(document).ready(function() {
 	
 	$('#stand').click(function() {
 		// doStand();	
-		
+
 		for (var x = 0; x < 4; x++) {
 			dealerDrawCard();
 		};
