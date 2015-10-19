@@ -80,21 +80,21 @@ $(document).ready(function() {
 		showDealer();
 	};
 
-	// var doStand = function() {
-	// 	// console.log('hello')
-	// 	for (var x = 0; x < 4; x++) {
-	// 		dealerDrawCard();
-	// 	};
-	// };
-tempNumber1 = parseInt(testing[2]);
+	var doStand = function() {
+		// console.log('hello')
+		// for (var x = 0; x < 4; x++) {
+		// 	dealerDrawCard();
+		// };
+	};
+
 	// takes >>>playerHand<<< and sums +after hit  
 	// var bankRoll;
-	function calcPlayer() {
+	var calcPlayer = function () {
 
 		var handTotal;
 		var tempValue;
 
-		var tempString = $('#yourHand cornerBR').text.split('');
+		var tempString = $('#yourHand cornerBR').text().split('');
 		
 		for (var x = 0; x < tempString.length; x++) {
 			var tempNumber1 = parseInt(tempString[x]);
@@ -124,7 +124,7 @@ tempNumber1 = parseInt(testing[2]);
 				};
 			};
 		};	
-		
+
 		console.log(handTotal);
 
 		if (x === 1 && handTotal === 21) {
@@ -133,6 +133,43 @@ tempNumber1 = parseInt(testing[2]);
 		} else if (handTotal > 21) {
 			alert('Player Bust! Learn to count');
 		};		
+	};
+
+	var dealerPlay = function() {
+		var handTotal;
+		var tempValue;
+
+		var tempString = $('#dealerHand cornerBR').text().split('');
+		
+		for (var x = 0; handTotal < 17; x++) {
+			var tempNumber1 = parseInt(tempString[x]);
+			var tempNumber2 = parseInt(tempString[x + 1]);
+
+			if (tempNumber1 <= 9) {
+				handTotal += tempNumber1
+				console.log(handTotal);
+
+				if (tempNumber2 <= 1) {
+					var tempNumber3 = parseInt(tempString[2] + tempString[3]);
+					handTotal += tempNumber3;
+				};
+			};
+
+			if (tempNumber1 === ('J' || 'Q' || 'K')) {
+				handTotal += 10;
+				console.log(handTotal);
+			};
+
+			if (tempNumber1 === 'A') {
+				handTotal += 11;
+				console.log(handTotal);
+
+				if (handTotal > 21) {
+					handTotal += 1;
+				};
+			};
+		dealerDrawCard();
+		};	
 	};
 
 // use the below to figure out value so can modify value/ calculate winner 
@@ -144,17 +181,13 @@ tempNumber1 = parseInt(testing[2]);
 	$('#shuffler').click(doShuffle);
 	
 	$('#draw').click(function() {
-		calcPlayer();
 		doDrawCard();
 		calcPlayer();
 	});
 	
 	$('#stand').click(function() {
 		// doStand();	
-
-		for (var x = 0; x < 4; x++) {
-			dealerDrawCard();
-		};
+		dealerPlay();
 	});
 
 	// add function call before dealerDrawCard that runs player turn (value count)
@@ -163,6 +196,7 @@ tempNumber1 = parseInt(testing[2]);
 		for (var x = 0; x < 2; x++) {
 			doDrawCard();
 			dealerDrawCard();
+			calcPlayer();
 			// setTimeout(dealerDrawCard(), 50000); >>>> doesn't work??
 		}
 	});	
@@ -217,9 +251,6 @@ tempNumber1 = parseInt(testing[2]);
 
 var body = document.querySelector('body');
 console.log(body);
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 // the gameDeck function below was a trial in generating my own deck. 
