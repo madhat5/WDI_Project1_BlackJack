@@ -52,19 +52,17 @@ $('#bet-button').click(function() {
 // 	// return handTotal
 // };
 
-$('#hit-button').click(function() {
-	// console.log('hit works');
-	for (hitCount = 0; hitCount; hitCount = playerHand.length) {
-		playerHand[hitCount] = gameShoe.splice(x);
-	}
-});
+// $('#hit-button').click(function() {
+// 	// console.log('hit works');
+// 	for (hitCount = 0; hitCount; hitCount = playerHand.length) {
+// 		playerHand[hitCount] = gameShoe.splice(x);
+// 	}
+// });
 
-$('#stand-button').click(function() {
-	// console.log('stand works');		bankroll += ((userInput * 1.5) + userInput);
-		// reset bet, reset hand
-		alert('BlackJack!');
-	dealerPlay(); //with settimeout
-});
+// $('#stand-button').click(function() {
+// 	// console.log('stand works');	
+// 	dealerPlay(); //with settimeout
+// });
 
 /////////////
 // function hitOrStand() {

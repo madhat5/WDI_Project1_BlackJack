@@ -24,11 +24,11 @@
 
 
 // shoeDeck holds/handles playable deck 
-var deckCount = 1;
-var gameShoe = [];
-var playDeck;
+// var deckCount = 1;
+// var gameShoe = [];
+// var playDeck;
 
-var shoeDeck = {
+// var shoeDeck = {
 	// deck52: [],
 	// deckShuffled: [],
 	// // this goes into gameDeck
@@ -38,13 +38,13 @@ var shoeDeck = {
 	// 	return deckShuffled;
 	// },
 	// deck: gameDeck, (card library)
-	shoe: function() {
-		for (var x = 0; x <= deckCount; x++) {
-			gameShoe[x] = deckShuffled.pop(); //sinon use .splice(x)
-		}
-		return gameShoe;
-	},
-};
+// 	shoe: function() {
+// 		for (var x = 0; x <= deckCount; x++) {
+// 			gameShoe[x] = deckShuffled.pop(); //sinon use .splice(x)
+// 		}
+// 		return gameShoe;
+// 	},
+// };
 
 
 ////////////////////////////////////////////////////////////////////////////////////

@@ -76,42 +76,35 @@ $(document).ready(function() {
 			return;
 		};
 
-		handDealer[handDealer.length] = c;
+		handDealer[handDealer.length] = c;	
 		showDealer();
 	};
 
-	var doStand = function() {
-		// console.log('hello')
-		for (var x = 0; x < 4; x++) {
-			dealerDrawCard();
-		};
-	};
+	// var doStand = function() {
+	// 	// console.log('hello')
+	// 	for (var x = 0; x < 4; x++) {
+	// 		dealerDrawCard();
+	// 	};
+	// };
 
 	// takes >>>playerHand<<< and sums +after hit  
 	// var bankRoll;
-
 	function calcPlayer() {
-		// if (playerHand[0].value + playerHand[1].value === 21) {
-		// 	bankRoll += ((userInput * 1.5) + userInput);
-		// 	// reset bet, reset hand
-		// 	alert('BlackJack!');
-		// }
 
 		var handTotal;
 		var tempValue;
 
-		for (var x = 0; x < handDealer.length, x++)
-			$( "#dealerHand div:nth-child(" + x + ")").html()
-		
-		for (var x = 0; x < playerHand.length; x++) {
-			handTotal += playerHand[x].value;
-		}
-		console.log(handTotal)
+		for (var x = 0; x < handDealer.length; x++) {
+			handTotal += $( "#dealerHand div:nth-child(" + x + ")").value;
+			console.log(handTotal);
 
-		if (handTotal > 21) {
-			alert('Player Bust! Learn to count')
-		}
-		// return handTotal
+			if (x === 1 && handTotal === 21) {
+				alert('BlackJack!');
+				// reset 
+			} else if (handTotal > 21) {
+				alert('Player Bust! Learn to count');
+			};
+		};		
 	};
 
 // use the below to figure out value so can modify value/ calculate winner 
@@ -121,9 +114,21 @@ $(document).ready(function() {
 	// };
 
 	$('#shuffler').click(doShuffle);
-	$('#draw').click(doDrawCard);
-	$('#stand').click(doStand);	
 	
+	$('#draw').click(function() {
+		calcPlayer();
+		doDrawCard();
+		calcPlayer();
+	});
+	
+	$('#stand').click(function() {
+		// doStand();	
+		
+		for (var x = 0; x < 4; x++) {
+			dealerDrawCard();
+		};
+	});
+
 	// add function call before dealerDrawCard that runs player turn (value count)
 	// add call after dealerDrawCard that runs dealer auto play
 	$('#start').click(function() {
