@@ -82,9 +82,9 @@ $(document).ready(function() {
 
 	var doStand = function() {
 		// console.log('hello')
-		// for (var x = 0; x < 4; x++) {
-		// 	dealerDrawCard();
-		// };
+		for (var x = 0; x < 3; x++) {
+			dealerDrawCard();
+		};
 	};
 
 	// takes >>>playerHand<<< and sums +after hit  
@@ -186,8 +186,10 @@ $(document).ready(function() {
 	});
 	
 	$('#stand').click(function() {
-		// doStand();	
-		dealerPlay();
+		setTimeout(function() {
+			doStand();	
+			// dealerPlay();
+		},1500);
 	});
 
 	// add function call before dealerDrawCard that runs player turn (value count)
@@ -195,7 +197,11 @@ $(document).ready(function() {
 	$('#start').click(function() {
 		for (var x = 0; x < 2; x++) {
 			doDrawCard();
-			dealerDrawCard();
+
+			setTimeout(function() {
+				dealerDrawCard();
+		},1200);
+
 			calcPlayer();
 			// setTimeout(dealerDrawCard(), 50000); >>>> doesn't work??
 		}
