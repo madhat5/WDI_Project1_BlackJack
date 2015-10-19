@@ -24,7 +24,7 @@ $('#bet-button').click(function() {
 	console.log('bet works');
 	var userInput = $('#bet-button').value; //not .innerHTML right?
 	
-	bankRoll -= userInput;
+	// bankRoll = userInput;
 	playerBet = userInput;
 
 	$('#player-bet').innerHTML = userInput;
@@ -33,24 +33,24 @@ $('#bet-button').click(function() {
 });
 
 // takes playerHand and sums +after hits  
-function calcPlayer() {
-	if (playerHand[0].value + playerHand[1].value === 21) {
-		bankroll += ((userInput * 1.5) + userInput);
-		// reset bet, reset hand
-		alert('BlackJack!');
-	}
+// function calcPlayer() {
+// 	if (playerHand[0].value + playerHand[1].value === 21) {
+// 		bankroll += ((userInput * 1.5) + userInput);
+// 		// reset bet, reset hand
+// 		alert('BlackJack!');
+// 	}
 
-	var handTotal;
-	for (var x = 0; x < playerHand.length; x++) {
-		handTotal += playerHand[x].value;
-	}
-	console.log(handTotal)
+// 	var handTotal;
+// 	for (var x = 0; x < playerHand.length; x++) {
+// 		handTotal += playerHand[x].value;
+// 	}
+// 	console.log(handTotal)
 
-	if (handTotal > 21) {
-		alert('Player Bust! Learn to count')
-	}
-	// return handTotal
-};
+// 	if (handTotal > 21) {
+// 		alert('Player Bust! Learn to count')
+// 	}
+// 	// return handTotal
+// };
 
 $('#hit-button').click(function() {
 	// console.log('hit works');
