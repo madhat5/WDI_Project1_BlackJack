@@ -86,7 +86,7 @@ $(document).ready(function() {
 	// 		dealerDrawCard();
 	// 	};
 	// };
-
+tempNumber1 = parseInt(testing[2]);
 	// takes >>>playerHand<<< and sums +after hit  
 	// var bankRoll;
 	function calcPlayer() {
@@ -94,16 +94,44 @@ $(document).ready(function() {
 		var handTotal;
 		var tempValue;
 
-		for (var x = 0; x < handDealer.length; x++) {
-			handTotal += $('#dealerHand').text		//$( "#dealerHand div:nth-child(" + x + ")").value;
-			console.log(handTotal);
+		var tempString = $('#yourHand cornerBR').text.split('');
+		
+		for (var x = 0; x < tempString.length; x++) {
+			var tempNumber1 = parseInt(tempString[x]);
+			var tempNumber2 = parseInt(tempString[x + 1]);
 
-			if (x === 1 && handTotal === 21) {
-				alert('BlackJack!');
-				// reset 
-			} else if (handTotal > 21) {
-				alert('Player Bust! Learn to count');
+			if (tempNumber1 <= 9) {
+				handTotal += tempNumber1
+				console.log(handTotal);
+
+				if (tempNumber2 <= 1) {
+					var tempNumber3 = parseInt(tempString[2] + tempString[3])
+					handTotal += tempNumber3;
+				};
 			};
+
+			if (tempNumber1 === ('J' || 'Q' || 'K')) {
+				handTotal += 10;
+				console.log(handTotal);
+			};
+
+			if (tempNumber1 === 'A') {
+				handTotal += 11;
+				console.log(handTotal);
+
+				if (handTotal > 21) {
+					handTotal += 1;
+				};
+			};
+		};	
+		
+		console.log(handTotal);
+
+		if (x === 1 && handTotal === 21) {
+			alert('BlackJack!');
+			// reset 
+		} else if (handTotal > 21) {
+			alert('Player Bust! Learn to count');
 		};		
 	};
 
